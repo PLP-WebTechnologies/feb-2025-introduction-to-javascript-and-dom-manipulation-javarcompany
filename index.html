@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Webpage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .dynamic-content {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .new-element {
+            background-color: lightblue;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Interactive Webpage</h1>
+
+    <div class="dynamic-content" id="text-container">
+        <p>This text will change when you click the button below.</p>
+    </div>
+
+    <button id="change-text-btn">Change Text Content</button>
+
+    <br><br>
+
+    <button id="change-style-btn">Change Text Style</button>
+
+    <br><br>
+
+    <button id="toggle-element-btn">Add/Remove Element</button>
+
+    <div id="new-element-container"></div>
+
+    <script>
+        // Change text content dynamically
+        document.getElementById('change-text-btn').addEventListener('click', function() {
+            const textContainer = document.getElementById('text-container');
+            textContainer.innerHTML = "<p>The text content has been changed!</p>";
+        });
+
+        // Modify CSS styles
+        document.getElementById('change-style-btn').addEventListener('click', function() {
+            const textContainer = document.getElementById('text-container');
+            textContainer.style.color = 'blue';
+            textContainer.style.fontWeight = 'bold';
+        });
+
+        // Add or remove an element
+        document.getElementById('toggle-element-btn').addEventListener('click', function() {
+            const newElementContainer = document.getElementById('new-element-container');
+            const existingElement = newElementContainer.querySelector('.new-element');
+            
+            if (existingElement) {
+                newElementContainer.removeChild(existingElement);
+            } else {
+                const newElement = document.createElement('div');
+                newElement.classList.add('new-element');
+                newElement.textContent = 'This is a dynamically added element!';
+                newElementContainer.appendChild(newElement);
+            }
+        });
+    </script>
+
+</body>
+</html>
